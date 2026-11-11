@@ -61,7 +61,7 @@ PayGuard moves fraud detection **before the transaction happens**.
 3. The employee reviews and confirms the extracted values.
 4. PayGuard compares the request with verified vendor history.
 5. A deterministic risk engine calculates the fraud score.
-6. AI provides contextual fraud insights.
+6. Rule-generated text explains the triggered risk flags (labelled 'AI insights' in the original Base44 prototype).
 7. High-risk payments are automatically blocked.
 8. A manager must verify, approve, or reject the request.
 9. Blocked payments can be handed off to DisputeKit for recovery tracking.
@@ -89,9 +89,9 @@ PayGuard moves fraud detection **before the transaction happens**.
 
 The scorer is a pure function in `src/lib/scorer.js`, covered by unit tests in `src/lib/scorer.test.mjs` (`npm test`).
 
-### 🧠 AI Contextual Analysis
+### 🧠 Contextual explanations (labelled 'AI insights' in the original)
 
-AI looks for social-engineering signals such as:
+Rule-generated text flags social-engineering signals such as:
 
 - Urgency
 - Verification avoidance
@@ -99,7 +99,7 @@ AI looks for social-engineering signals such as:
 - Suspicious banking-change explanations
 - Attempts to bypass normal procedures
 
-> AI contextual insights do **not** independently change the numerical PayGuard risk score. In this reconstruction they are rule-based explanatory text generated from the detected flags — not a live AI model call.
+> These explanations do **not** independently change the numerical PayGuard risk score. In this reconstruction they are rule-based explanatory text generated from the detected flags — not a live AI model call.
 
 ### 🔒 High-Risk Payment Control
 
@@ -111,7 +111,7 @@ Managers can review:
 - Triggered risk factors
 - Verified vs. requested payment details
 - Vendor history
-- AI contextual insights
+- Rule-generated contextual explanations
 - Original invoice and message
 
 The manager then chooses:
